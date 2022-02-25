@@ -1,45 +1,34 @@
-import React, { useState } from "react";
-import {
-  MdFreeBreakfast,
-  MdLunchDining,
-  MdOutlineDinnerDining,
-  MdCake,
-} from "react-icons/md";
+import { MdFreeBreakfast, MdLunchDining, MdCake } from "react-icons/md";
 import ReactReadMoreReadLess from "react-read-more-read-less";
 import { GiForkKnifeSpoon } from "react-icons/gi";
 
 export default function Card({ item }) {
-  const [bgCategory, setBgCategory] = useState(
+  const bgCategory =
     item.category === "Breakfast"
-      ? "bg-black"
+      ? " bg-black"
       : item.category === "Lunch"
-      ? "bg-yellow-300"
+      ? " bg-yellow-300"
       : item.category === "Dinner"
-      ? "bg-lime-800"
-      : "bg-yellow-600"
-  );
-  const [txtColor, setTxtColor] = useState(
+      ? " bg-lime-800"
+      : " bg-yellow-600";
+
+  const txtColor =
     item.category === "Breakfast"
-      ? "text-white"
+      ? " text-white"
       : item.category === "Lunch"
-      ? "text-black"
+      ? " text-black"
       : item.category === "Dinner"
-      ? "text-white"
-      : "text-black"
-  );
+      ? " text-white"
+      : " text-black";
 
   return (
-    <div key={item.id} className="bg-slate-100 p-4 rounded-lg grid-custom">
-      <img src={item.img} />
+    <div className="bg-slate-100 p-4 rounded-lg max-w-screen-sm">
+      <img src={item.img} alt={item.title} />
 
       <div className="text-left my-2">
         <h1 className="font-medium text-xl md:text-2xl">{item.title}</h1>
         <div className="flex justify-between ">
-          <div
-            className={
-              bgCategory + " " + txtColor + " " + "w-fit px-2 rounded-lg"
-            }
-          >
+          <div className={bgCategory + txtColor + " w-fit px-2 rounded-lg"}>
             {item.category === "Breakfast" && (
               <MdFreeBreakfast className="inline-block " />
             )}
